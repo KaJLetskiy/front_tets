@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Стилі для D1 */
+        .d1 {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+        }
+
+        /* Стилі для D2 (з границями) */
+        .d2 {
+            border: 11px groove #00FF00; /* Зелений колір границі */
+        }
+
+        /* Стилі для D3 (зі скругленням кутів границь) */
+        .d3 {
+            border-radius: 40%;
+        }
+
+        /* Стилі для D4 (з тінню) */
+        .d4 {
+            box-shadow: 16px 20px 12px 4px #FF0000; /* Червоний колір тіні */
+        }
+
+        /* Стилі для D5 (з перетвореннями) */
+        .d5 {
+            transform: translateX(300px) translateY(0) scaleX(0.6) scaleY(1.2) rotate(50deg) skewX(20deg);
+        }
+
+        /* Стилі заголовків стовбців та меж для таблиці */
+        th {
+            border-top: 4px inset #00CED1; /* Бірюзовий колір меж з товщиною 4 */
+        }
+
+        /* Стилі для комірки таблиці з фоном у вигляді лінійного градієнту */
+        .linear-gradient-cell {
+            background: linear-gradient(to bottom, #247e67, #48c40e);
+        }
+
+        /* Стилі для комірки таблиці з фоном у вигляді радіального градієнту */
+        .radial-gradient-cell {
+            background: radial-gradient(circle, #FFD700, #FFA500);
+        }
+
+        /* Стилі для комірок таблиці з довільним фоновим кольором */
+        .colored-cell {
+            background-color: #FF6347; /* Довільний колір */
+        }
+
+        /* Додаткові стилі для об'єднаних стовбців та рядків в таблиці */
+        /* Об'єднані стовбці: Рядок 3, Стовбці 4-5 */
+        tr:nth-child(3) th:nth-child(4),
+        tr:nth-child(3) th:nth-child(5) {
+            background-color: #7bcccc; 
+        }
+
+        /* Об'єднані рядки: Стовбець 1, Рядки 1-3 */
+        tr:nth-child(1) th:nth-child(1),
+        tr:nth-child(2) th:nth-child(1),
+        tr:nth-child(3) th:nth-child(1) {
+            background-color: #7bcccc; 
+        }
+
+        /* Об'єднані рядки: Рядки 1-3 */
+        tr:nth-child(1) td,
+        tr:nth-child(2) td,
+        tr:nth-child(3) td {
+            background-color: #7bcccc;
+        }
+    </style>
+</head>
+<body>
+    <!-- Контейнер для елементів D1, D2, D3, D4, D5 -->
+    <div class="d1">D1</div>
+    <div class="d2">D2</div>
+    <div class="d2 d3">D3</div>
+    <div class="d2 d4">D4</div>
+    <div class="d2 d5">D5</div>
+
+    <!-- Таблиця -->
+    <table border="1">
+        <!-- Заголовки стовбців -->
+        <tr>
+            <th>Заголовок 1</th>
+            <th>Заголовок 2</th>
+            <th>Заголовок 3</th>
+            <th>Заголовок 4</th>
+            <th>Заголовок 5</th>
+        </tr>
+        <!-- Рядок 1-3 (об'єднані рядки) -->
+        <tr>
+            <td class="colored-cell" rowspan="3">Об'єднані комірки</td>
+            <td class="linear-gradient-cell">Комірка 2</td>
+            <td class="radial-gradient-cell">Комірка 3</td>
+            <td>Комірка 4</td>
+            <td class="colored-cell">Комірка 5</td>
+        </tr>
+        <!-- Рядок 4 -->
+        <tr>
+            <td class="radial-gradient-cell">Комірка 6</td>
+            <td>Комірка 7</td>
+            <td>Комірка 8</td>
+            <td class="colored-cell">Комірка 9</td>
+        </tr>
+        <!-- Рядок 5 -->
+        <tr>
+            <td class="linear-gradient-cell">Комірка 14</td>
+            <td>Комірка 15</td>
+            <td colspan="2">Об'єднані стовпці</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Завдання</title>
+</head>
+<body>
+    <table id="myTable">
+        <tr>
+            <td>Рядок 1, Стовпець 1</td>
+            <td>Рядок 1, Стовпець 2</td>
+        </tr>
+        <tr>
+            <td>Рядок 2, Стовпець 1</td>
+            <td>Рядок 2, Стовпець 2</td>
+        </tr>
+    </table>
+    <ol>
+        <li>Перший елемент</li>
+        <li>Другий елемент</li>
+        <li>Третій елемент</li>
+    </ol>
+
+    <script>
+        // 1) Змінити властивості тегу TABLE по подвійному кліку
+        const table = document.getElementById('myTable');
+        table.addEventListener('dblclick', function () {
+            // Змінити властивості у вигляді HTML-атрибута
+            table.setAttribute('border', '2');
+
+            // Змінити властивості за допомогою атрибута style
+            table.style.backgroundColor = 'lightgray';
+            table.style.border = '1px solid black';
+
+            // Змінити властивості за допомогою тегу <style>
+            const styleTag = document.createElement('style');
+            styleTag.textContent = 'table { border-collapse: collapse; }';
+            document.head.appendChild(styleTag);
+        });
+
+        // 2) Відновити початкові властивості тегу TABLE по mouseout
+        table.addEventListener('mouseout', function () {
+            // Відновити початкові властивості у вигляді HTML-атрибута
+            table.removeAttribute('border');
+
+            // Відновити початкові властивості за допомогою атрибута style
+            table.style.backgroundColor = '';
+            table.style.border = '';
+
+            // Відновити початкові властивості за допомогою тегу <style>
+            const styleTag = document.querySelector('style');
+            if (styleTag) {
+                styleTag.remove();
+            }
+        });
+
+        // 3) Змінити одну властивість всіх тегів OL по mousewheel
+        const olElements = document.querySelectorAll('ol');
+        document.addEventListener('wheel', function (event) {
+            olElements.forEach((ol) => {
+                const currentSize = parseFloat(window.getComputedStyle(ol).fontSize);
+                const newSize = currentSize + event.deltaY;
+                ol.style.fontSize = newSize + 'px';
+            });
+        });
+
+        // 4) Реєстрація обробників подій
+
+        // Реєстрація для dblclick - вбудована модель
+        table.addEventListener('dblclick', function () {
+            alert('Подвійний клік вбудованою моделлю');
+        });
+
+        // Реєстрація для mouseout - традиційна модель
+        table.onmouseout = function () {
+            alert('mouseout традиційною моделлю');
+        };
+
+        // Реєстрація для mousewheel - вдосконалена модель
+        table.addEventListener('wheel', function () {
+            alert('mousewheel вдосконаленою моделлю');
+        });
+
+        // 5) Обробник події error
+        window.addEventListener('error', function (event) {
+            alert('Сталася помилка: ' + event.message);
+        });
+    </script>
+</body>
+</html>

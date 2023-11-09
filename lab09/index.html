@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three-Layer Structure</title>
+    <style>
+        #layer1, #layer2, #layer3 {
+            display: none;
+        }
+
+        #image {
+            position: absolute;
+            top: 50px;  /* Позначка від верху */
+            left: 50px; /* Позначка від лівого краю */
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+<div id="layer1">
+    <!-- Содержимое первого слоя -->
+    <img src="E:\Файли\фотокарточки\13.jpg" alt="Layer 1">
+</div>
+
+<div id="layer2">
+    <!-- Содержимое второго слоя -->
+    <p>This is Layer 2.</p>
+</div>
+
+<div id="layer3">
+    <!-- Содержимое третьего слоя -->
+    <table border="1">
+        <tr>
+            <td>Row 1, Cell 1</td>
+            <td>Row 1, Cell 2</td>
+        </tr>
+        <tr>
+            <td>Row 2, Cell 1</td>
+            <td>Row 2, Cell 2</td>
+        </tr>
+    </table>
+</div>
+
+
+<script>
+    document.addEventListener('keydown', function (event) {
+        switch (event.key) {
+            case '1':
+                document.getElementById('layer1').style.display = 'block';
+                document.getElementById('layer2').style.display = 'none';
+                document.getElementById('layer3').style.display = 'none';
+                break;
+            case '2':
+                document.getElementById('layer1').style.display = 'none';
+                document.getElementById('layer2').style.display = 'block';
+                document.getElementById('layer3').style.display = 'none';
+                break;
+            case '3':
+                document.getElementById('layer1').style.display = 'none';
+                document.getElementById('layer2').style.display = 'none';
+                document.getElementById('layer3').style.display = 'block';
+                break;
+            case '4':
+                document.getElementById('layer1').style.display = 'block';
+                document.getElementById('layer2').style.display = 'none';
+                document.getElementById('layer3').style.display = 'block';
+                break;
+            case 'Control':
+                if (event.ctrlKey) {
+                    if (document.getElementById('comment')) {
+                        document.getElementById('comment').remove();
+                    } else {
+                        var comment = document.createElement('div');
+                        comment.id = 'comment';
+                        comment.textContent = 'Зображення було додано через пряме посилання! (Для видалення даного коментаря потворно натисніть Ctrl)';
+                        document.body.appendChild(comment);
+                    }
+                }
+                break;
+            case 'F1':
+                alert('Для подій натисніть ц + 1, 2, 3 або 4.\nДля подій 5 та 6 використовуйте Ctrl.\nДля виведення підказки натисніть F1.');
+                break;
+        }
+    });
+</script>
+
+</body>
+</html>

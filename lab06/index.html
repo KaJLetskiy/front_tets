@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Тест</title>
+</head>
+<body>
+    <script>
+    try {
+  // Запит на введення назви групи та прізвища студента
+  const groupName = prompt("Введіть назву групи:");
+  if (!groupName) throw "Поле назви групи не може бути порожнім!";
+  
+  const studentName = prompt("Введіть своє прізвище:");
+  if (!studentName) throw "Поле прізвища не може бути порожнім!";
+  
+  // Виведення питань та обробка відповідей
+  let score = 0;
+
+  const questions = [
+  {
+    question: "Чи можна відобразити зображення на веб-сторінці за допомогою HTML?",
+    correctAnswer: "так",
+  },
+  {
+    question: "Чи можна змінювати розмір зображення за допомогою CSS?",
+    correctAnswer: "так",
+  },
+  {
+    question: "Чи можна створити анімацію зображення за допомогою CSS?",
+    correctAnswer: "так",
+  },
+  {
+    question: "Чи можна відобразити зображення без використання HTML-тегу <img>?",
+    correctAnswer: "ні",
+  },
+  {
+    question: "Чи можна змінювати джерело зображення за допомогою JavaScript?",
+    correctAnswer: "так",
+  },
+];
+
+for (const q of questions) {
+  const userAnswer = confirm(q.question);
+
+  if ((userAnswer && q.correctAnswer === "так") || (!userAnswer && q.correctAnswer === "ні")) {
+    score++;
+  }
+}
+
+  // Виведення результатів тестування
+  alert(`Прізвище студента: ${studentName}\nНазва групи: ${groupName}\nОтримана оцінка: ${score} з ${questions.length}`);
+} catch (error) {
+  alert(`Помилка: ${error}`);
+}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab04</title>
+    <style>
+        html {
+            background-image: url('foto.jpg'); /* Відносний URL до фонового зображення */
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        body {
+            margin: 0;
+        }
+        .transparent-box {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .opaque-box {
+            background-color: #ff0000da;
+            padding: 20px;
+            display: block;
+            margin-bottom: 920px; /* Зменшено відступ до 20px */
+        }
+        .image-frame {
+            border: 2px outset #000;
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 1100px; /* Додайте відступ між зображеннями */
+        }
+        .resized-image {
+            display: block;
+            margin: 0 auto 20px; /* Додано margin для центрування та відступу вниз */
+            max-width: 100%;
+        }
+        .cropped-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        video {
+            width: 400px;
+            height: 300px;
+            display: block;
+            margin: 0 auto 20px; /* Додано margin для центрування та відступу вниз */
+        }
+        audio {
+            display: block;
+            margin: 0 auto 20px; /* Додано margin для центрування та відступу вниз */
+        }
+        .image-link {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .text-link {
+            font-size: 18px;
+            margin-right: 20px;
+        }
+
+        .button-link {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* Сегментована графіка з областями чутливості та встановлення курсору */
+        .image-map {
+            position: relative;
+            display: inline-block;
+        }
+
+        .image-map a {
+            position: absolute;
+            cursor: n-resize;
+        }
+
+        .image-map .pentagon {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 87px solid red;
+            top: 30px;
+            left: 30px;
+        }
+
+        .image-map .square {
+            width: 60px;
+            height: 60px;
+            background-color: green;
+            top: 150px;
+            left: 30px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="transparent-box">
+        <h1>Прозора область</h1>
+    </div>
+
+    <div class="opaque-box">
+        <h1>Непрозора область</h1>
+    </div>
+
+    <div class="image-frame">
+        <img src="photo_2023-01-31_12-33-13.jpg" alt="Зображення в рамці"> <!-- Відносний URL до зображення -->
+    </div>
+
+    <div class="resized-image">
+        <img src="photo_2023-05-12_17-06-57.jpg" alt="Зображення зі зміною розміру"> <!-- Відносний URL до зображення -->
+    </div>
+
+    <div class="cropped-image">
+        <img src="10.jpg" alt="Вирізане зображення"> <!-- Відносний URL до зображення -->
+    </div>
+
+    <video controls>
+        <source src="funny_cat.mp4" type="video/mp4"> <!-- Відносний URL до відеофайлу -->
+    </video>
+
+    <audio controls>
+        <source src="Crystal.mp3" type="audio/mpeg"> <!-- Відносний URL до аудіофайлу -->
+    </audio>
+        <!-- Звичайне посилання у вигляді зображення -->
+        <a class="image-link" href="https://www.imdb.com/title/tt10048342/">
+            <img src="anya.jpg" alt="Звичайне посилання на карту">
+        </a>
+    
+        <!-- Два локальні посилання -->
+        <p class="text-link"><a href="local-link1.html">Локальне посилання 1</a></p>
+        <button class="button-link" onclick="window.location.href='local-link2.html'">Локальне посилання 2</button>
+    
+    <!-- Посилання у вигляді сегментованої графіки з областями чутливості -->
+    <div class="image-map">
+        <img src="123.jpg" alt="Сегментована графіка">
+        <a class="pentagon" href="https://www.imdb.com/name/nm5896355/?ref_=tt_cl_t_1"></a>
+        <a class="square" href="https://www.imdb.com/title/tt10048342/mediaviewer/rm3333477121/?ref_=tt_mi_sm"></a>
+        </div>
+</body>
+</html>

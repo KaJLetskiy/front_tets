@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Завдання</title>
+</head>
+<body>
+    <div id="output"></div>
+    <script>
+        // 1. Створити індексний масив з різними типами елементів.
+        const myArray = [5, 3.14, 42, 9, 'привіт', 'ранок', 'побачення', 11.5, 'ялта', 'смуток'];
+
+        // 2. Використати метод shift() над елементами масиву.
+        myArray.shift();
+
+        // 3. Визначити типи елементів і знайти останній рядок за алфавітом.
+        let lastString = '';
+        for (const element of myArray) {
+            if (typeof element === 'string') {
+                if (element > lastString) {
+                    lastString = element;
+                }
+            }
+        }
+
+        // 4. Створити асоціативний масив з не менше 5 елементів.
+        const associativeArray = {
+            apple: 'red',
+            banana: 'yellow',
+            cherry: 'red',
+            date: 'brown',
+            grape: 'purple',
+        };
+
+        // 5. Знайти ключ максимальної довжини.
+        let longestKey = '';
+        for (const key in associativeArray) {
+            if (key.length > longestKey.length) {
+                longestKey = key;
+            }
+        }
+
+        // 6. Вивести асоціативний масив на сторінку.
+        const output = document.getElementById('output');
+        output.innerHTML = `
+            <h2>Модифікований масив:</h2>
+            <pre>${JSON.stringify(myArray, null, 2)}</pre>
+            <h2>Останній рядок за алфавітом:</h2>
+            <p>${lastString}</p>
+            <h2>Асоціативний масив:</h2>
+            <pre>${JSON.stringify(associativeArray, null, 2)}</pre>
+            <h2>Ключ максимальної довжини:</h2>
+            <p>${longestKey}</p>
+        `;
+
+        // 7. Створити багатовимірний асоціативний масив.
+        const multiDimensionalArray = {
+            fruits: ['apple', 'banana', 'cherry'],
+            colors: ['red', 'yellow', 'purple'],
+        };
+
+        // 8. Визначити назву та версію поточного браузера.
+        const userAgent = navigator.userAgent;
+
+        let browserName = "Unknown";
+        let browserVersion = "Unknown";
+
+        if (userAgent.indexOf("Chrome") !== -1) {
+            browserName = "Google Chrome";
+            // Отримуємо версію Chrome
+            const versionIndex = userAgent.indexOf("Chrome") + 7;
+            browserVersion = userAgent.substring(versionIndex, versionIndex + 2);
+            } else if (userAgent.indexOf("Firefox") !== -1) {
+            browserName = "Mozilla Firefox";
+            // Отримуємо версію Firefox
+            const versionIndex = userAgent.indexOf("Firefox") + 8;
+            browserVersion = userAgent.substring(versionIndex, versionIndex + 2);
+        }
+        console.log('Назва браузера:', browserName);
+        console.log('Версія браузера:', browserVersion);
+
+        output.innerHTML += `
+            <h2>Багатовимірний асоціативний масив:</h2>
+            <pre>${JSON.stringify(multiDimensionalArray, null, 2)}</pre>
+            <h2>Назва браузера:</h2>
+            <p>${browserName}</p>
+            <h2>Версія браузера:</h2>
+            <p>${browserVersion}</p>
+        `;
+    </script>
+</body>
+</html>

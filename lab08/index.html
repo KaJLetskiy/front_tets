@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Рух об'єкта</title>
+  <style>
+    .letter {
+      position: absolute;
+      font-size: 24px;
+      color: red;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Оголошуємо початкові значення для літери
+    let letter = document.createElement("div");
+    letter.className = "letter";
+    letter.innerText = "A";
+    letter.style.left = "200px"; // Початкова позиція X
+    letter.style.top = "0px";   // Початкова позиція Y
+    document.body.appendChild(letter);
+
+    // Обробник подвійного кліку
+    letter.addEventListener("dblclick", function () {
+      // Змінюємо властивості літери
+      letter.innerText = "B";
+      letter.style.color = "blue";
+      letter.style.fontSize = "32px";
+    });
+
+    // Обробник подвійного кліку для руху
+    letter.addEventListener("dblclick", function () {
+      const startTop = parseInt(letter.style.top, 10);
+      const startLeft = parseInt(letter.style.left, 10);
+      const duration = 2000; // час руху в мілісекундах
+      const startTime = performance.now();
+      const windowHeight = window.innerHeight;
+      const windowWidth = window.innerWidth;
+
+      function animate() {
+        const currentTime = performance.now();
+        const elapsedTime = currentTime - startTime;
+        if (elapsedTime < duration) {
+          const t = elapsedTime / duration;
+          const curveY = windowHeight * t;
+          const curveX = 200 * t;
+          letter.style.top = startTop + curveY + "px";
+          letter.style.left = startLeft + curveX + "px";
+          if (startTop + curveY < windowHeight - letter.clientHeight) {
+            requestAnimationFrame(animate);
+          }
+        }
+      }
+
+      requestAnimationFrame(animate);
+    });
+  </script>
+</body>
+</html>

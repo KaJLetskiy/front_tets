@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Клієнтська частина</title>
+</head>
+<body>
+    <h1>Форма для передачі даних на сервер</h1>
+    <form method="get" action="server.cgi">
+        <label for="group">Назва студентської групи:</label>
+        <input type="text" id="group" name="group" required><br><br>
+
+        <label for="name">Прізвище та ініціали студента:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="numbers">П'ять чисел (розділені пробілом):</label>
+        <input type="text" id="numbers" name="numbers" required><br><br>
+
+        <label for="outputType">Виберіть тип виводу:</label>
+        <select id="outputType" name="outputType">
+            <option value="Сума">Сума</option>
+            <option value="Максимум">Максимум</option>
+            <option value="За спаданням">За спаданням</option>
+        </select><br><br>
+
+        <label for="tasks">Виберіть завдання обробки:</label>
+        <input type="checkbox" id="tasks" name="tasks[]" value="Сума">Сума
+        <input type="checkbox" id="tasks" name="tasks[]" value="Максимум">Максимум
+        <input type="checkbox" id="tasks" name="tasks[]" value="За спаданням">За спаданням<br><br>
+
+        <input type="submit" value="Відправити дані">
+        <input type="reset" value="Скасувати">
+    </form>
+</body>
+</html>
